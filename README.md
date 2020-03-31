@@ -12,7 +12,6 @@ For each keystroke, headless chromium is used to render an HTML page and take a 
 
 See the image embedded in the tweet for a real use case.
 
-
 ## What is an Open Graph Image?
 
 Have you ever posted a hyperlink to Twitter, Facebook, or Slack and seen an image popup?
@@ -34,7 +33,7 @@ It looks like the following:
 
 Read the [blog post](https://zeit.co/blog/social-og-image-cards-as-a-service) for more info on the "Why" part.
 
-The short answer is that it would take a long time to painstakingly design an image for every single blog post. And we don't want the exact same image for every blog post because that wouldn't make the article stand out when it was shared to Twitter. 
+The short answer is that it would take a long time to painstakingly design an image for every single blog post. And we don't want the exact same image for every blog post because that wouldn't make the article stand out when it was shared to Twitter.
 
 That's where `og-image.now.sh` comes in. We can simply pass the title of our blog post to our generator service and it will generate the image for us on the fly!
 
@@ -43,7 +42,10 @@ It looks like the following:
 ```html
 <head>
   <title>Hello World</title>
-  <meta property="og:image" content="https://og-image.now.sh/Hello%20World.png" />
+  <meta
+    property="og:image"
+    content="https://og-image.now.sh/Hello%20World.png"
+  />
 </head>
 ```
 
@@ -57,13 +59,13 @@ You'll want to fork this repository and deploy your own image generator.
 2. Clone the repo to your local machine with `git clone URL_OF_FORKED_REPO_HERE`
 3. Change directory with `cd og-image`
 4. Make changes by swapping out images, changing colors, etc (see [contributing](https://github.com/zeit/og-image/blob/master/CONTRIBUTING.md) for more info)
-5. Run locally with `now dev` and visit [localhost:3000](http://localhost:3000)  (if nothing happens, run `npm install -g now`)
+5. Run locally with `now dev` and visit [localhost:3000](http://localhost:3000) (if nothing happens, run `npm install -g now`)
 6. Deploy to the cloud by running `now` and you'll get a unique URL
 7. Setup [GitHub](https://zeit.co/github) to autodeply on push
 
 Alternatively, you can do a one-click to deploy with the button below.
 
-[![Deploy to now](https://zeit.co/button)](https://zeit.co/new/project?template=zeit/og-image)
+[![Deploy to now](https://zeit.co/button)](https://zeit.co/new/project?template=codetivity/og-image)
 
 Once you have an image generator that sparks joy, you can setup [automatic Now + GitHub](https://zeit.co/github) deployments so that pushing to master is also deploying to production! 🚀
 
