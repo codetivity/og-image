@@ -6,15 +6,19 @@ const twemoji = require("twemoji");
 const twOptions = { folder: "svg", ext: ".svg" };
 const emojify = (text: string) => twemoji.parse(text, twOptions);
 
-const rglr = readFileSync(`${__dirname}/../_fonts/open-sans.woff2`).toString(
-  "base64"
-);
-const bold = readFileSync(
-  `${__dirname}/../_fonts/open-sans-bold.woff2`
-).toString("base64");
+// const rglr = readFileSync(`${__dirname}/../_fonts/open-sans.woff2`).toString(
+//   "base64"
+// );
+// const bold = readFileSync(
+//   `${__dirname}/../_fonts/open-sans-bold.woff2`
+// ).toString("base64");
 // const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString(
 //   "base64"
 // );
+
+const backgroundImage = readFileSync(
+  `${__dirname}/../_assets/86280.jpg`
+).toString("base64");
 
 function getCss(theme: string, fontSize: string) {
   let background = "white";
@@ -27,25 +31,11 @@ function getCss(theme: string, fontSize: string) {
     // radial = "dimgray";
   }
   return `
-    @font-face {
-        font-family: 'Open Sans';
-        font-style:  normal;
-        font-weight: normal;
-        src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
-    }
-
-    @font-face {
-        font-family: 'Open Sans';
-        font-style:  normal;
-        font-weight: bold;
-        src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
-    }
-
     @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans:400,700&display=block&subset=latin-ext');
     
     body {
         background: ${background};
-        background-image:url("https://i.imgur.com/FVh9p6m.jpg");
+        background-image:url(data:image/jpg;base64,${backgroundImage});
         background-repeat: no-repeat;
         background-size: cover; 
         
@@ -84,7 +74,7 @@ function getCss(theme: string, fontSize: string) {
     }
 
     .spacer {
-        margin: 150px;
+        margin: 100px;
     }
 
     .emoji {
@@ -99,7 +89,7 @@ function getCss(theme: string, fontSize: string) {
         font-size: ${sanitizeHtml(fontSize)};
         font-style: normal;
         color: ${foreground};
-        line-height: 1.8;
+        line-height: 1.4;
     }`;
 }
 
@@ -134,7 +124,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 </html>`;
 }
 
-function getImage(src: string, width = "auto", height = "225") {
+function getImage(src: string, width = "auto", height = "300") {
   return `<img
         class="logo"
         alt="Generated Image"
